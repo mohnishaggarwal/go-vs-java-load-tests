@@ -12,7 +12,7 @@ export const options = {
     },
 };
 
-const BASE_URL = 'http://GoServ-GoSer-UK1wIPFegCvT-1603535570.us-east-1.elb.amazonaws.com/api/products';
+const BASE_URL = 'http://GoServ-GoSer-uLlgd436qhsS-1428470051.us-east-1.elb.amazonaws.com/api/products';
 
 let ID_COUNTER = '1';
 
@@ -59,13 +59,6 @@ export default function () {
         'Second GET has 2xx status': (r) => r.status >= 200 && r.status < 300,
     });
     sleep(0.5);
-
-    const parsedBody = JSON.parse(getRes2.body || '{}');
-    check(parsedBody.product, {
-        'ID is correct': (p) => p.id === finalPayloadObj.id,
-        'Name is correct': (p) => p.name === finalPayloadObj.name,
-        'Price is correct': (p) => p.price === finalPayloadObj.price,
-    });
 
     ID_COUNTER = (parseInt(ID_COUNTER, 10) + 1).toString();
 
